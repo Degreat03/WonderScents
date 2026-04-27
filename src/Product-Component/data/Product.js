@@ -1,11 +1,11 @@
 // Add an extra "../" to go back far enough to find the assets folder
-import Fragrance1 from "../../assets/Avanti-blue (1).jpg";
+import Fragrance1 from "../../assets/Avanti-blue-1.jpg";
 import Fragrance2 from "../../assets/Avanti-red.jpg";
 import Fragrance3 from "../../assets/Avanti-black.jpg";
 import Fragrance4 from "../../assets/rigg gold.png";
 import Fragrance5 from "../../assets/rigg patrol.png";
-import Fragrance6 from "../../assets/rigg voyage (2).png";
-import Fragrance7 from "../../assets/body-mist-cocunut.jpg";
+import Fragrance6 from "../../assets/rigg voyage-2.png";
+import Fragrance7 from "../../assets/body-mist-coconut.jpg";
 import Fragrance8 from "../../assets/body-mist-pink.jpg";
 import Fragrance9 from "../../assets/body-mist-vanilla.jpg";
 

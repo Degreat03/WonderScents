@@ -1,10 +1,10 @@
 import AvantiRed from "../assets/Avanti-red.jpg"
-import AvantiBlue from "../assets/Avanti-blue (1).jpg"
+import AvantiBlue from "../assets/Avanti-blue-1.jpg"
 import AvantiBlack from "../assets/Avanti-black.jpg"
 import RiggGold from "../assets/rigg gold.png"
 import RiggPatrol from "../assets/rigg patrol.png"
-import RiggVoyage from "../assets/rigg voyage (2).png"
-import BodyMistCoco from "../assets/body-mist-cocunut.jpg"
+import RiggVoyage from "../assets/rigg voyage-2.png"
+import BodyMistCoco from "../assets/body-mist-coconut.jpg"
 import BodyMistPink from "../assets/body-mist-pink.jpg"
 import BodyMistVanilla from "../assets/body-mist-vanilla.jpg"
 
