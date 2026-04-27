@@ -6,7 +6,7 @@ import RiggPatrol from "../assets/rigg-patrol.png"
 import RiggVoyage from "../assets/rigg-voyage-2.png"
 import BodyMistCoco from "../assets/body-mist-coconut.jpg"
 import BodyMistPink from "../assets/body-mist-pink.jpg"
-import BodyMistVanilla from "../assets/body-mist-vanilla.jpg"
+import BodyMistVanilla from "../assets/vanilla.jpg"
 
 function Features(){
     return(

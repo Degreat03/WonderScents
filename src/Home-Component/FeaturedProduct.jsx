@@ -20,7 +20,7 @@ import img5 from "../assets/rigg-patrol.png"; // Replace with your actual paths
 import img6 from "../assets/rigg-voyage-2.png";
 import img7 from "../assets/body-mist-coconut.jpg"
 import img8 from "../assets/body-mist-pink.jpg"
-import img9 from "../assets/body-mist-vanilla.jpg"
+import img9 from "../assets/vanilla.jpg"
 
 function FeaturedProduct(){
   return (

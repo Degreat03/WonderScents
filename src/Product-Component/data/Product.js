@@ -7,7 +7,7 @@ import Fragrance5 from "../../assets/rigg-patrol.png";
 import Fragrance6 from "../../assets/rigg-voyage-2.png";
 import Fragrance7 from "../../assets/body-mist-coconut.jpg";
 import Fragrance8 from "../../assets/body-mist-pink.jpg";
-import Fragrance9 from "../../assets/body-mist-vanilla.jpg";
+import Fragrance9 from "../../assets/vanilla.jpg";
 
 export const Product = [
   { id: 1, img: Fragrance1, name: "Royal Gold", price: 150 },
