@@ -30,7 +30,6 @@ function Features(){
                     className="w-[300px] h-[300px]"
                     />
                     <h3 className="font-[700]">Avanti Red</h3>
-                    <h1>Hello</h1>
                 </div>
                 <div className="bg-white shadow-lg
                  rounded  p-[10px]
