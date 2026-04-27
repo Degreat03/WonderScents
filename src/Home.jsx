@@ -8,6 +8,7 @@ function Home(){
             <Hero />
             <Features />
             <FeaturedProduct />
+            
         </div>
     )
 }
