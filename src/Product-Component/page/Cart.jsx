@@ -1,136 +1,129 @@
-import React from 'react';
-import { useState } from 'react';
+import React from 'react'; // Unused useState removed to fix terminal error
 import { usePaystackPayment } from 'react-paystack';
 
-function Cart({ cart = [], isCartOpen, setIsCartOpen, removeFromCart }) {
-    
-    const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const deliveryCost = totalPrice * 10 / 100;
-    const grandTotal = totalPrice + deliveryCost; 
-    const [isDelivery, setIsDelivery] = useState(false);
-    const finalTotal = isDelivery ? grandTotal : totalPrice;
+function Cart({ cart, 
+                setCart, 
+                isCartOpen, 
+                setIsCartOpen, 
+                removeFromCart, 
+                handlePaymentSuccess, 
+                isDelivery, 
+                setIsDelivery,
+                updateQuantity 
+            }) {
+  const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const deliveryCost = Math.round(totalPrice * 0.1);
+  const finalTotal = isDelivery ? totalPrice + deliveryCost : totalPrice;
 
-    // Paystack Configuration
-    const config = {
-    reference: (new Date()).getTime().toString(),
-    email: "customer@example.com", 
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: "customer@example.com",
     amount: finalTotal * 100,
     publicKey: 'pk_test_8a8a25b412e2fcabac50f5476535173253d03f97',
     metadata: {
-        // "custom_fields" is the magic key that Paystack looks for to display data on the dashboard
         custom_fields: [
             {
                 display_name: "Cart Items",
                 variable_name: "cart_items",
-                // We join the item names into a single string for easy reading
-                value: cart.map(item => `${item.name} (${item.quantity})`).join(", ")
+                // This line creates the text you'll see in Paystack
+                value: cart.map(item => `${item.name} (x${item.quantity})`).join(", ")
+            
             },
             {
-                display_name: "Checkout Type",
-                variable_name: "checkout_type",
-                value: "Fragrance Web Store"
-            }
+                display_name: "Delivery Fee",
+                variable_name: "delivery_fee",
+                // This line creates the text you'll see in Paystack
+                value: `₦${deliveryCost}`
+            
+            },
         ]
     }
-};
+  };
 
-    const initializePayment = usePaystackPayment(config);
+  const initializePayment = usePaystackPayment(config);
 
-    const onSuccess = (reference) => {
-        // This is where you'd clear the cart and show a success message
-        console.log("Payment Successful! Reference:", reference);
-        alert("Thank you for your purchase!");
-        setIsCartOpen(false);
-    };
+  // FIX: Added these functions back so the terminal errors go away
+  const onSuccess = (reference) => {
+    handlePaymentSuccess(reference);
+  };
 
-    const onClose = () => {
-        console.log("Payment window closed");
-    };
+  const onClose = () => {
+    console.log("Payment window closed");
+  };
 
-    return (
-        <div>
-            {/* Slide-out Cart Drawer */}
-            {isCartOpen && (
-                <div style={{
-                    position: "fixed", top: "0", right: "0", width: "350px", height: "100vh",
-                    backgroundColor: "white", boxShadow: "-5px 0 15px rgba(0,0,0,0.2)",
-                    padding: "20px", zIndex: 100, overflowY: "auto"
-                }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "black", padding: "10px", color: "white", marginBottom: "15px" }}>
-                        <h2 style={{ margin: 0, fontSize: "1.2rem" }}>Your Cart</h2>
-                        <button onClick={() => setIsCartOpen(false)} style={{ cursor: "pointer", fontWeight: "700", background: "none", border: "none", color: "white", fontSize: "1.2rem" }}>X</button>
-                    </div>
+  const handleCheckoutClick = () => {
+    // 1. Clear the UI and storage immediately
+    setCart([]); 
+    localStorage.removeItem("wonderscents_cart");
+    
+    // 2. Open Paystack
+    initializePayment(onSuccess, onClose);
+  };
 
-                    {cart.length === 0 ? <p>Your cart is empty.</p> : (
-                        <>
-                            {cart.map(item => (
-                                <div key={item.id} style={{ display: "flex", gap: "15px", marginBottom: "15px", alignItems: "center" }}>
-                                    <img src={item.img} alt={item.name} style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "5px" }} />
-                                    <div style={{ flex: 1 }}>
-                                        <h4 style={{ margin: "0" }}>{item.name}</h4>
-                                        <small>{item.quantity} x ₦{item.price}</small>
-                                        <button 
-                                            onClick={() => removeFromCart(item.id)}
-                                            style={{ 
-                                                display: "block", 
-                                                background: "none", 
-                                                border: "none", 
-                                                color: "#ff4d4d", 
-                                                fontSize: "0.75rem", 
-                                                cursor: "pointer", 
-                                                padding: "5px 0",
-                                                textDecoration: "underline"
-                                            }}
-                                        >
-                                            <i class="bx bx-trash text-xl text-primary" />
-                                        </button>
-                                    </div>
-                                    <strong>₦{item.price * item.quantity}</strong>
-                                </div>
-                            ))}
-                            <hr style={{ border: "0.5px solid #eee" }} />
-                            <div style={{ textAlign: "right", marginTop: "20px" }}>
-                                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-                                    <span>Total:</span>
-                                    <h3>₦{finalTotal}</h3>
-                                </div>
-                                <div className="shipping-options text-sm mb-[10px] text-left">
-                                <label className='mr-[10px]'>
-                                    <input 
-                                    type="radio" 
-                                    name="shipping" 
-                                    checked={!isDelivery} 
-                                    onChange={() => setIsDelivery(false)} 
-                                    /> Store Pickup (Free)
-                                </label>
-                                
-                                <label>
-                                    <input 
-                                    type="radio" 
-                                    name="shipping" 
-                                    checked={isDelivery} 
-                                    onChange={() => setIsDelivery(true)} 
-                                    /> Home Delivery (₦{deliveryCost})
-                                </label>
-                                </div>
-                                
-                                <button 
-                                    onClick={() => initializePayment(onSuccess, onClose)}
-                                    style={{ 
-                                        width: "100%", padding: "12px", backgroundColor: "#000", 
-                                        color: "#fff", border: "none", borderRadius: "5px", 
-                                        cursor: "pointer", fontSize: "1rem", fontWeight: "bold" 
-                                    }}
-                                >
-                                    Proceed to Checkout
-                                </button>
-                            </div>
-                        </>
-                    )}
-                </div>
-            )}
+  if (!isCartOpen) return null;
+
+  return (
+    <div style={{ position: "fixed", top: 0, right: 0, width: "350px", height: "100vh", backgroundColor: "white", zIndex: 1000, padding: "20px", boxShadow: "-2px 0 10px rgba(0,0,0,0.1)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px", backgroundColor: "black", color: "white", padding: "10px" }}>
+        <h2 style={{ margin: 0 }}>Your Cart</h2>
+        <button onClick={() => setIsCartOpen(false)} style={{ color: "white", background: "none", border: "none", cursor: "pointer" }}>X</button>
+      </div>
+
+      {cart.length === 0 ? <p>Your cart is empty.</p> : (
+        <>
+          {cart.map((item) => (
+            <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+              <div className='flex items-center'>
+                <img 
+                    src={item.image || item.img} 
+                    alt={item.name} 
+                    style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "5px" }} 
+                />
+                 <span>{item.name} x {item.quantity}</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px"}}>
+          <button 
+            onClick={() => updateQuantity(item.id, -1)}
+            style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
+          >
+            -
+          </button>
+          
+          <span>{item.quantity}</span>
+          
+          <button 
+            onClick={() => updateQuantity(item.id, 1)}
+            style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
+          >
+            +
+          </button>
         </div>
-    );
+              <button onClick={() => removeFromCart(item.id)} style={{ color: "red", border: "none", background: "none", fontSize: "20px", cursor:"pointer" }}>
+                <i className="bx bx-trash"></i>
+              </button>
+            </div>
+          ))}
+
+          {/* FIX: Using setIsDelivery here fixes the "defined but never used" error */}
+          <div style={{ marginTop: "20px", marginLeft:"20px", fontSize: "14px"  }}>
+            <label>
+              <input type="radio" checked={!isDelivery} onChange={() => setIsDelivery(false)} /> Store Pickup(Free)
+            </label>
+            <label style={{ marginLeft: "10px" }}>
+              <input type="radio" checked={isDelivery} onChange={() => setIsDelivery(true)} /> Home Delivery(₦{deliveryCost})
+            </label>
+          </div>
+
+          <button 
+            onClick={handleCheckoutClick}
+            style={{ width: "100%", padding: "12px", backgroundColor: "black", color: "white", marginTop: "20px", cursor: "pointer" }}
+          >
+            Proceed to Checkout (₦{finalTotal})
+          </button>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default Cart;
