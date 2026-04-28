@@ -4,12 +4,25 @@ import About from "./About.jsx"
 import Product from "./Products.jsx"
 import Contact from "./Contact.jsx"
 import NavBar from "./Home-Component/NavBar.jsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Cart from "./Product-Component/page/Cart";
 import Footer from "./Home-Component/Footer.jsx"
 
 function App(){
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("wonderscents_cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("wonderscents_cart", JSON.stringify(cart));
+  }, [cart]);
+  const handlePaymentSuccess = (reference) => {
+    console.log(reference);
+    // Important: Clear the cart in both state AND memory after purchase
+    setCart([]);
+    localStorage.removeItem("wonderscents_cart"); 
+    // maybe navigate to a success page here
+  };
       const [isCartOpen, setIsCartOpen] = useState(false);
 
   // This shared function adds items to the global cart state
@@ -22,7 +35,7 @@ function App(){
         });
       };
       const removeFromCart = (id) => {
-          setCart(cart.filter(item => item.id !== id));
+        setCart((prev) => prev.filter(item => item.id !== id));
       };
     return(
       
@@ -31,7 +44,7 @@ function App(){
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/about" element={<About />}/>
-          <Route path="/products" element={<Product addToCart={addToCart}/>}/>
+          <Route path="/products" element={<Product  addToCart={addToCart}/>}/>
           <Route path="/contact" element={<Contact />}/>
         </Routes>
         <Cart 
@@ -41,6 +54,7 @@ function App(){
         setIsCartOpen={setIsCartOpen} 
         addToCart={addToCart}
         removeFromCart={removeFromCart} 
+        handlePaymentSuccess={handlePaymentSuccess}
       />
       <Footer />
       </div>
