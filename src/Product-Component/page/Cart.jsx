@@ -63,7 +63,7 @@ function Cart({ cart,
   if (!isCartOpen) return null;
 
   return (
-    <div style={{ position: "fixed", top: 0, right: 0, width: "350px", height: "100vh", backgroundColor: "white", zIndex: 1000, padding: "20px", boxShadow: "-2px 0 10px rgba(0,0,0,0.1)" }}>
+    <div style={{ position: "fixed", top: 0, right: 0, width: "350px", height: "100vh", backgroundColor: "white", zIndex: 1000, padding: "20px", boxShadow: "-2px 0 10px rgba(0,0,0,0.1)", overflowX: "auto" }}>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px", backgroundColor: "black", color: "white", padding: "10px" }}>
         <h2 style={{ margin: 0 }}>Your Cart</h2>
         <button onClick={() => setIsCartOpen(false)} style={{ color: "white", background: "none", border: "none", cursor: "pointer" }}>X</button>
@@ -82,22 +82,22 @@ function Cart({ cart,
                  <span>{item.name} x {item.quantity}</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "10px"}}>
-          <button 
-            onClick={() => updateQuantity(item.id, -1)}
-            style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
-          >
-            -
-          </button>
-          
-          <span>{item.quantity}</span>
-          
-          <button 
-            onClick={() => updateQuantity(item.id, 1)}
-            style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
-          >
-            +
-          </button>
-        </div>
+                <button 
+                  onClick={() => updateQuantity(item.id, -1)}
+                  style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
+                >
+                  -
+                </button>
+                
+                <span>{item.quantity}</span>
+                
+                <button 
+                  onClick={() => updateQuantity(item.id, 1)}
+                  style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
+                >
+                  +
+                </button>
+              </div>
               <button onClick={() => removeFromCart(item.id)} style={{ color: "red", border: "none", background: "none", fontSize: "20px", cursor:"pointer" }}>
                 <i className="bx bx-trash"></i>
               </button>
