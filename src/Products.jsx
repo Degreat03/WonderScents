@@ -36,7 +36,7 @@ function Products({  addToCart }) {
                 </div>
             </div>
 
-            Category 2: Body Spray (using 'Product2')
+            {/* Category 2: Body Spray (using 'Product2') */}
             <div className="my-[80px] mx-[20px]">
                 <h2 className="text-center text-3xl font-bold my-[20px]">Body Spray</h2>
                 <div className="flex flex-col items-center">
