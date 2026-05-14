@@ -7,6 +7,7 @@ import NavBar from "./Home-Component/NavBar.jsx"
 import { useState, useEffect } from "react"
 import Cart from "./Product-Component/page/Cart";
 import Footer from "./Home-Component/Footer.jsx"
+import ScrollToTop from "./ScrollToTop.jsx"
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -77,6 +78,7 @@ function App() {
         setIsDelivery={setIsDelivery}
         updateQuantity={updateQuantity}
       />
+      <ScrollToTop />
       <Footer />
     </div>
   );

@@ -12,15 +12,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 // Import your actual images
-import img1 from "../assets/Avanti-red.jpg"
-import img2 from "../assets/Avanti-blue-1.jpg"
-import img3 from "../assets/Avanti-black.jpg"
-import img4 from "../assets/rigg-gold.png";
-import img5 from "../assets/rigg-patrol.png"; // Replace with your actual paths
-import img6 from "../assets/rigg-voyage-2.png";
-import img7 from "../assets/body-mist-coconut.jpg"
-import img8 from "../assets/body-mist-pink.jpg"
-import img9 from "../assets/vanilla.jpg"
+import img1 from "../assets/tusk-silver.png"
+import img2 from "../assets/rigg-gold.png"
+import img3 from "../assets/khamrah-qahwa-lattafa.png"
+import img4 from "../assets/rigg-patrol.png"
+import img5 from "../assets/tusk-la-male.png"
+import img6 from "../assets/rigg-voyage-2.png"
+import img7 from "../assets/deal-water-perfume.png"
+import img8 from "../assets/breed-my-man.png"
+import img9 from "../assets/Aventos-blue.png"
 
 function FeaturedProduct(){
   return (
@@ -48,7 +48,7 @@ function FeaturedProduct(){
                 className="rounded-xl shadow-lg h-[350px]  bg-white w-full p-2"
             >
                 <SwiperSlide className="flex items-center justify-center">
-                <img src={img1} alt="Avanti Red"   className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
+                <img src={img1} alt="Avanti Black"   className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
                 </SwiperSlide>
                 
                 <SwiperSlide className="flex items-center justify-center">
@@ -65,13 +65,16 @@ function FeaturedProduct(){
                 <img src={img5} alt="Riggs Patrol"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
                 </SwiperSlide>
                 <SwiperSlide className="flex items-center justify-center">
-                <img src={img2} alt="Avanti Blue"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
+                <img src={img2} alt="Tusk White"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
                 </SwiperSlide>
                 <SwiperSlide className="flex items-center justify-center">
                 <img src={img6} alt="Rigg Voyage"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
                 </SwiperSlide>
                 <SwiperSlide className="flex items-center justify-center">
-                <img src={img3} alt="Avanti Black"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
+                <img src={img5} alt="Afnan Caldadon"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
+                </SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center">
+                <img src={img3} alt="Afnan Brown"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>
                 </SwiperSlide>
                 <SwiperSlide className="flex items-center justify-center">
                 <img src={img9} alt="Body-mist Vanilla"  className="h-[90%] w-auto m-[auto] py-4 object-contain"/>

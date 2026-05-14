@@ -1,6 +1,6 @@
-import AvantiRed from "../assets/Avanti-red.jpg"
-import AvantiBlue from "../assets/Avanti-blue-1.jpg"
-import AvantiBlack from "../assets/Avanti-black.jpg"
+import AvantiRed from "../assets/avanti-water-perfume.png"
+import Challenge from "../assets/challenge-intense.png"
+import AfnanBrown from "../assets/afnan-brown.jpg"
 import RiggGold from "../assets/rigg-gold.png"
 import RiggPatrol from "../assets/rigg-patrol.png"
 import RiggVoyage from "../assets/rigg-voyage-2.png"
@@ -24,12 +24,18 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={AvantiRed} 
-                    alt="Avanti-red" 
-                    className="w-[300px] h-[300px]"
+                    alt="Avanti-black" 
+                    className="w-[150px]"
                     />
-                    <h3 className="font-[700]">Avanti Red</h3>
+                    <h3 className="font-[700] mt-[10px]">Avanti Black</h3>
                 </div>
                 <div className="bg-white shadow-lg
                  rounded  p-[10px]
@@ -37,12 +43,18 @@ function Features(){
                 md:mb-[30px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
-                    <img src={AvantiBlue} 
+                    <img src={Challenge} 
                     alt="Avanti-red" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
-                    <h3 className="font-[700]">Avanti Blue</h3>
+                    <h3 className="font-[700]">Tusk White</h3>
                 </div>
                 <div className="bg-white shadow-lg rounded 
                 mb-[20px]
@@ -50,10 +62,15 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
-                    <img src={AvantiBlack} 
-                    alt="Avanti-red" 
-                    className="w-[300px] h-[300px]"
+                    <img src={AfnanBrown} 
+                    alt="Afnan Brown" 
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Avanti Black</h3>
                 </div>
@@ -70,10 +87,16 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={RiggGold} 
                     alt="Riggs-gold" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Riggs Gold</h3>
                 </div>
@@ -83,10 +106,16 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={RiggPatrol} 
                     alt="Riggs-patrol" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Riggs Patrol</h3>
                 </div>
@@ -96,10 +125,16 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={RiggVoyage} 
                     alt="Riggs-voyage" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Riggs Voyage</h3>
                 </div>
@@ -116,10 +151,16 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={BodyMistCoco} 
                     alt="Body-mist Coconut" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Body-mist Coconut</h3>
                 </div>
@@ -129,10 +170,16 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={BodyMistPink} 
                     alt="Body-mist Pink" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Body-mist Pink</h3>
                 </div>
@@ -142,10 +189,16 @@ function Features(){
                 p-[10px] 
                 transition-transform hover:-translate-y-[10px]
                 cursor-pointer
+                w-[300px]
+                h-[280px]
+                flex
+                flex-col
+                items-center
+                justify-center
                 ">
                     <img src={BodyMistVanilla} 
                     alt="Body-mist Vanilla" 
-                    className="w-[300px] h-[300px]"
+                    className="w-[150px]"
                     />
                     <h3 className="font-[700]">Body-mist Vanilla</h3>
                 </div>

@@ -77,7 +77,7 @@ function Cart({ cart,
                 <img 
                     src={item.image || item.img} 
                     alt={item.name} 
-                    style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "5px" }} 
+                    style={{ width: "40px", height: "40px", objectFit: "cover", borderRadius: "5px" }} 
                 />
                  <span>{item.name} x {item.quantity}</span>
               </div>

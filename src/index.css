@@ -4,10 +4,11 @@
   --color-primary: #DBA39A;
   --color-secondary: rgb(211, 204, 204);
   --color-tertiary: #dda39a;
+  --color-tertiary2: #000000c2;
   --color-opacity: #b4756bea;
   --color-opacity2: #e0e0e0cb;
 }
 
 .c{
-  color: #e0e0e0cb;
+  background-color: #000000c2;
 }
