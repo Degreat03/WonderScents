@@ -60,7 +60,9 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <NavBar cartCount={cart.length} openCart={() => setIsCartOpen(true)} />
+      <NavBar cartCount={cart.length} 
+              openCart={() => setIsCartOpen(true)}
+       />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
