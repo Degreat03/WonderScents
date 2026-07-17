@@ -72,38 +72,65 @@ function Cart({ cart,
       {cart.length === 0 ? <p>Your cart is empty.</p> : (
         <>
           {cart.map((item) => (
-            <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
-              <div className='flex items-center'>
+            <div 
+              key={item.id} 
+              className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4"
+              style={{ gap: "12px" }}
+            >
+              {/* Left: Product Image & Text Block */}
+              <div className="flex items-center flex-1 min-w-0" style={{ gap: "12px" }}>
                 <img 
-                    src={item.image || item.img} 
-                    alt={item.name} 
-                    style={{ width: "40px", height: "40px", objectFit: "cover", borderRadius: "5px" }} 
+                  src={item.image || item.img} 
+                  alt={item.name} 
+                  style={{ width: "48px", height: "48px", objectFit: "contain", backgroundColor: "#f8fafc", p: "4px", borderRadius: "4px" }} 
                 />
-                 <span>{item.name} x {item.quantity}</span>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-xs font-bold text-slate-800 truncate">{item.name}</span>
+                  <span className="text-[11px] text-slate-400 mt-0.5">x {item.quantity}</span>
+                </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px"}}>
-                <button 
-                  onClick={() => updateQuantity(item.id, -1)}
-                  style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
-                >
-                  -
-                </button>
+
+              {/* Right: Controls Wrapper (Quantity Selectors + Trash Button Aligned) */}
+              <div className="flex items-center" style={{ gap: "14px" }}>
                 
-                <span>{item.quantity}</span>
-                
-                <button 
-                  onClick={() => updateQuantity(item.id, 1)}
-                  style={{ width: "28px", height: "31px", cursor: "pointer", border: "none", color: "white", background: "#DBA39A", borderRadius: "10px", fontSize:"20px" }}
+                {/* Modern Compact Stepper */}
+                <div 
+                  className="flex items-center border border-slate-200 rounded-sm bg-white overflow-hidden"
+                  style={{ height: "28px" }}
                 >
-                  +
+                  <button 
+                    onClick={() => updateQuantity(item.id, -1)}
+                    className="hover:bg-slate-50 transition-colors flex items-center justify-center font-medium text-slate-600"
+                    style={{ width: "24px", height: "100%", cursor: "pointer", border: "none", background: "none", fontSize: "14px" }}
+                  >
+                    -
+                  </button>
+                  
+                  <span className="text-xs font-bold text-slate-700 px-1 select-none text-center min-w-[20px]">
+                    {item.quantity}
+                  </span>
+                  
+                  <button 
+                    onClick={() => updateQuantity(item.id, 1)}
+                    className="hover:bg-slate-50 transition-colors flex items-center justify-center font-medium text-slate-600"
+                    style={{ width: "24px", height: "100%", cursor: "pointer", border: "none", background: "none", fontSize: "14px" }}
+                  >
+                    +
+                  </button>
+                </div>
+                
+                {/* Sleek Delete Icon Action */}
+                <button 
+                  onClick={() => removeFromCart(item.id)} 
+                  className="hover:text-red-600 text-slate-400 transition-colors p-1"
+                  style={{ border: "none", background: "none", fontSize: "18px", cursor: "pointer", display: "flex", alignItems: "center" }}
+                >
+                  <i className="bx bx-trash"></i>
                 </button>
+
               </div>
-              <button onClick={() => removeFromCart(item.id)} style={{ color: "red", border: "none", background: "none", fontSize: "20px", cursor:"pointer" }}>
-                <i className="bx bx-trash"></i>
-              </button>
             </div>
           ))}
-
           {/* FIX: Using setIsDelivery here fixes the "defined but never used" error */}
           <div style={{ marginTop: "20px", marginLeft:"20px", fontSize: "14px"  }}>
             <label>
