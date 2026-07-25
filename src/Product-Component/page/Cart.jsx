@@ -107,7 +107,7 @@ function Cart({ cart,
                     -
                   </button>
                   
-                  <span className="text-xs font-bold text-slate-700 px-1 select-none text-center min-w-[20px]">
+                  <span className="text-xs font-bold text-slate-700 px-1 select-none text-center min-w-5">
                     {item.quantity}
                   </span>
                   

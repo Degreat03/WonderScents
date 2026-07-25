@@ -42,9 +42,9 @@ function NavBar({ cartCount, openCart }){
         <div>
             <div className="flex items-center justify-between px-10 py-4 bg-primary text-white font-bold fixed w-full top-0 z-50 gap-4">
                 {/* Brand Logo Container */}
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                     <Link to="/">
-                        <img src={logo} alt="Logo" className="w-[40px] h-[40px] rounded-full" />
+                        <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
                     </Link>
                 </div>
 
@@ -52,7 +52,7 @@ function NavBar({ cartCount, openCart }){
                 {isProductPage && (
                     <div className="hidden md:block relative w-full max-w-sm mx-auto text-black font-normal">
                         <div className="flex items-center bg-white/10 border border-white/20 rounded-md px-3 py-1.5 focus-within:border-white focus-within:bg-white transition-all text-white focus-within:text-slate-800">
-                            <i className="bx bx-search text-xl mr-2 flex-shrink-0 opacity-70"></i>
+                            <i className="bx bx-search text-xl mr-2 shrink-0 opacity-70"></i>
                             <input
                                 type="text"
                                 placeholder="Search fragrances..."
@@ -76,10 +76,10 @@ function NavBar({ cartCount, openCart }){
                                         // This updates the URL string so your grid can catch it and filter down instantly
                                         to={`/products?search=${encodeURIComponent(item.name)}`}
                                         onClick={clearSearch}
-                                        className="flex items-center justify-between p-3 hover:bg-slate-50 transition-colors cursor-pointer border-b border-slate-100 last:border-none block"
+                                        className=" items-center justify-between p-3 hover:bg-slate-50 transition-colors cursor-pointer border-b border-slate-100 last:border-none block"
                                     >
                                         <div className="flex items-center gap-3 min-w-0">
-                                            <div className="w-9 h-9 flex items-center justify-center bg-slate-50 p-1 rounded-sm flex-shrink-0">
+                                            <div className="w-9 h-9 flex items-center justify-center bg-slate-50 p-1 rounded-sm shrink-0">
                                                 <img
                                                     src={item.img}
                                                     alt={item.name}
@@ -90,7 +90,7 @@ function NavBar({ cartCount, openCart }){
                                                 {item.name}
                                             </span>
                                         </div>
-                                        <span className="text-xs font-bold text-slate-600 pl-2 flex-shrink-0">
+                                        <span className="text-xs font-bold text-slate-600 pl-2 shrink-0">
                                             ₦{item.price}
                                         </span>
                                     </Link>
@@ -108,7 +108,7 @@ function NavBar({ cartCount, openCart }){
                 )}
 
                 {/* Right Sided Header Elements Layout Block */}
-                <div className="flex items-center gap-8 flex-shrink-0">
+                <div className="flex items-center gap-8 shrink-0">
                     {/* Desktop Menu */}
                     <nav className="hidden sm:flex gap-8">
                         <Link to="/">Home</Link>
@@ -125,7 +125,7 @@ function NavBar({ cartCount, openCart }){
                                 className="hidden sm:block relative p-2 bg-white rounded-full text-black text-xl 
                                 hover:scale-110 cursor-pointer transition-transform"
                             >
-                                <i className='bx bx-cart text-2xl rounded-full px-[3px]'></i>
+                                <i className='bx bx-cart text-2xl rounded-full px-0.75'></i>
                                 {cartCount > 0 && (
                                     <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full h-5 w-5 flex items-center justify-center">
                                         {cartCount}
@@ -147,7 +147,7 @@ function NavBar({ cartCount, openCart }){
 
             {/* Mobile Menu */}
             {open && (
-                <nav className="flex flex-col items-center sm:hidden bg-primary w-full z-40 fixed text-white p-6 gap-5 top-[72px] shadow-lg">
+                <nav className="flex flex-col items-center sm:hidden bg-primary w-full z-40 fixed text-white p-6 gap-5 top-18 shadow-lg">
                     <Link to="/" onClick={() => setOpen(false)}>Home</Link>
                     <Link to="/about" onClick={() => setOpen(false)}>About</Link>
                     <Link to="/products" onClick={() => setOpen(false)}>Products</Link>

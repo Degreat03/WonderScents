@@ -3,19 +3,19 @@ import PhaithWonder from "../assets/1000029231.jpg"
 function History(){
     return(
         <div>
-            <h1 className=" my-[80px] mx-[auto] text-center bg-tertiary p-[20px] text-white font-[600] 
-            text-xl sm:text-2xl lg:w-[50rem] sm:w-[5rem] md:w-[30rem]">
+            <h1 className=" my-20 mx-auto text-center bg-tertiary p-5 text-white font-semibold
+            text-xl sm:text-2xl lg:w-200 sm:w-20 md:w-120">
                 History</h1>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center 
-            justify-items-center text-center max-w-[1000px] mx-auto
-            gap-[20px] sm:p-[20px] md:p-[30px] lg:p-[30px]
+            justify-items-center text-center max-w-250 mx-auto
+            gap-5 sm:p-5 md:p-7.5 lg:p-7.5
             ">
                 <div>
                     <img src={PhaithWonder} 
-                    className="sm:h-[35rem] sm:w-[17rem] md:h-[35rem] md:w-[25rem] 
+                    className="sm:h-140 sm:w-68 md:h-120 md:w-100 
                     rounded-lg shadow-md object-cover
                     gap-7
-                    lg:h-[30rem] lg:w-[25rem]"
+                    lg:h-120 lg:w-100"
                     alt="Phaith Wonder" />
                 </div>
                 <div>

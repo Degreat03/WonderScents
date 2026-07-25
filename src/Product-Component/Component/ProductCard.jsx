@@ -9,9 +9,9 @@ function ProductCard({ item, onAdd }) {
         className="max-h-full max-w-full object-contain" 
       />
     </div>
-      <h3 className="text-lg mb-[10px]">{item.name}</h3>
-      <p className="text-md font-[700] mb-[10px]">₦{item.price}</p>
-      <button onClick={() => onAdd(item)} className="bg-primary py-[5px] px-[15px] 
+      <h3 className="text-lg mb-2.5">{item.name}</h3>
+      <p className="text-md font-bold mb-2.5">₦{item.price}</p>
+      <button onClick={() => onAdd(item)} className="bg-primary py-1.25 px-3.75 
       rounded-2xl text-white 
       cursor-pointer hover:bg-opacity transition-all
       ">Add to Cart</button>

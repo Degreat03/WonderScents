@@ -11,186 +11,147 @@ import BodyMistVanilla from "../assets/vanilla.jpg"
 function Features(){
     return(
         <div>
-            <h2 className="text-center text-xl md:text-4xl font-[600] my-[20px]">Features</h2>
             <h3 className="text-center text-primary
-             mt-[30px] mb-[30px] text-lg md:text-2xl font-[600]">Perfumes</h3>
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center 
-            justify-items-center text-center max-w-[1000px] mx-auto
-            gap-[10px]
-            ">
+             mt-12.5 mb-12.5 text-lg md:text-2xl font-semibold">Perfume</h3>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-items-center text-center 
+            gap-2.5
+            max-w-250 mx-auto">
                 <div className="bg-white shadow-lg rounded 
-                mb-[20px]
-                md:mb-[30px] 
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
-                h-[280px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
                 justify-center
                 ">
                     <img src={AvantiRed} 
-                    alt="Avanti-black" 
-                    className="w-[150px]"
+                    alt="AvantiRed" 
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700] mt-[10px]">Avanti Black</h3>
+                    <h3 className="font-bold">Avanti (for her)</h3>
                 </div>
-                <div className="bg-white shadow-lg
-                 rounded  p-[10px]
-                mb-[20px]
-                md:mb-[30px] 
-                transition-transform hover:-translate-y-[10px]
+                <div className="bg-white shadow-lg rounded 
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
-                h-[280px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
                 justify-center
                 ">
                     <img src={Challenge} 
-                    alt="Avanti-red" 
-                    className="w-[150px]"
+                    alt="Challenge" 
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700]">Tusk White</h3>
+                    <h3 className="font-bold">Challenge</h3>
                 </div>
                 <div className="bg-white shadow-lg rounded 
-                mb-[20px]
-                md:mb-[30px]
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
                 justify-center
                 ">
                     <img src={AfnanBrown} 
-                    alt="Afnan Brown" 
-                    className="w-[150px]"
+                    alt="AfnanBrown" 
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700]">Avanti Black</h3>
+                    <h3 className="font-bold">Afnan Brown</h3>
                 </div>
             </div>
             {/* Body Spray */}
             <h3 className="text-center text-primary
-             mt-[50px] mb-[50px] text-lg md:text-2xl font-[600]">Body Sprays</h3>
+             mt-12.5 mb-12.5 text-lg md:text-2xl font-semibold">Body Spray</h3>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-items-center text-center 
-            gap-[10px]
-            max-w-[1000px] mx-auto">
+            gap-2.5
+            max-w-250 mx-auto">
                 <div className="bg-white shadow-lg rounded 
-                mb-[20px]
-                md:mb-[30px] 
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
-                h-[280px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
                 justify-center
                 ">
                     <img src={RiggGold} 
-                    alt="Riggs-gold" 
-                    className="w-[150px]"
+                    alt="RiggGold" 
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700]">Riggs Gold</h3>
+                    <h3 className="font-bold">Rigg Gold</h3>
                 </div>
-                <div className="bg-white shadow-lg rounded
-                mb-[20px]
-                md:mb-[30px]
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
+                <div className="bg-white shadow-lg rounded 
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
-                h-[280px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
                 justify-center
                 ">
                     <img src={RiggPatrol} 
-                    alt="Riggs-patrol" 
-                    className="w-[150px]"
+                    alt="RiggPatrol" 
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700]">Riggs Patrol</h3>
+                    <h3 className="font-bold">Rigg Patrol</h3>
                 </div>
                 <div className="bg-white shadow-lg rounded 
-                mb-[20px]
-                md:mb-[30px]
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
-                h-[280px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
                 justify-center
                 ">
                     <img src={RiggVoyage} 
-                    alt="Riggs-voyage" 
-                    className="w-[150px]"
+                    alt="RiggVoyage" 
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700]">Riggs Voyage</h3>
+                    <h3 className="font-bold">Rigg Voyage</h3>
                 </div>
             </div>
             {/* Body Mist */}
             <h3 className="text-center text-primary
-             mt-[50px] mb-[50px] text-lg md:text-2xl font-[600]">Body Mist</h3>
+             mt-12.5 mb-12.5 text-lg md:text-2xl font-semibold">Body Mist</h3>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-items-center text-center 
-            gap-[10px]
-            max-w-[1000px] mx-auto">
-                <div className="bg-white shadow-lg rounded mr-[20px] 
-                mb-[20px]
-                md:mb-[30px]
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
-                cursor-pointer
-                w-[300px]
-                h-[280px]
-                flex
-                flex-col
-                items-center
-                justify-center
-                ">
-                    <img src={BodyMistCoco} 
-                    alt="Body-mist Coconut" 
-                    className="w-[150px]"
-                    />
-                    <h3 className="font-[700]">Body-mist Coconut</h3>
-                </div>
+            gap-2.5
+            max-w-250 mx-auto">
                 <div className="bg-white shadow-lg rounded 
-                mb-[20px]
-                md:mb-[30px]
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
                 cursor-pointer
-                w-[300px]
-                h-[280px]
-                flex
-                flex-col
-                items-center
-                justify-center
-                ">
-                    <img src={BodyMistPink} 
-                    alt="Body-mist Pink" 
-                    className="w-[150px]"
-                    />
-                    <h3 className="font-[700]">Body-mist Pink</h3>
-                </div>
-                <div className="bg-white shadow-lg rounded 
-                mb-[20px]
-                md:mb-[30px]
-                p-[10px] 
-                transition-transform hover:-translate-y-[10px]
-                cursor-pointer
-                w-[300px]
-                h-[280px]
+                w-75
+                h-70
                 flex
                 flex-col
                 items-center
@@ -198,9 +159,47 @@ function Features(){
                 ">
                     <img src={BodyMistVanilla} 
                     alt="Body-mist Vanilla" 
-                    className="w-[150px]"
+                    className="w-37.5"
                     />
-                    <h3 className="font-[700]">Body-mist Vanilla</h3>
+                    <h3 className="font-bold">Body-mist Vanilla</h3>
+                </div>
+                <div className="bg-white shadow-lg rounded 
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
+                cursor-pointer
+                w-75
+                h-70
+                flex
+                flex-col
+                items-center
+                justify-center
+                ">
+                    <img src={BodyMistPink} 
+                    alt="Body-mist Pink" 
+                    className="w-37.5"
+                    />
+                    <h3 className="font-bold">Body-mist Pink</h3>
+                </div>
+                <div className="bg-white shadow-lg rounded 
+                mb-5
+                md:mb-7.5
+                p-2.5 
+                transition-transform hover:-translate-y-2.5
+                cursor-pointer
+                w-75
+                h-70
+                flex
+                flex-col
+                items-center
+                justify-center
+                ">
+                    <img src={BodyMistVanilla} 
+                    alt="Body-mist Vanilla" 
+                    className="w-37.5"
+                    />
+                    <h3 className="font-bold">Body-mist Vanilla</h3>
                 </div>
             </div>
         </div>
