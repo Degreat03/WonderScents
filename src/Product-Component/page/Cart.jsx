@@ -1,5 +1,4 @@
-import React from 'react'; // Unused useState removed to fix terminal error
-import { usePaystackPayment } from 'react-paystack';
+import React, { useState } from 'react';
 
 function Cart({ cart, 
                 setCart, 
@@ -15,49 +14,55 @@ function Cart({ cart,
   const deliveryCost = Math.round(totalPrice * 0.1);
   const finalTotal = isDelivery ? totalPrice + deliveryCost : totalPrice;
 
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: "customer@example.com",
-    amount: finalTotal * 100,
-    publicKey: 'pk_test_8a8a25b412e2fcabac50f5476535173253d03f97',
-    metadata: {
-        custom_fields: [
-            {
-                display_name: "Cart Items",
-                variable_name: "cart_items",
-                // This line creates the text you'll see in Paystack
-                value: cart.map(item => `${item.name} (x${item.quantity})`).join(", ")
-            
-            },
-            {
-                display_name: "Delivery Fee",
-                variable_name: "delivery_fee",
-                // This line creates the text you'll see in Paystack
-                value: `₦${deliveryCost}`
-            
-            },
-        ]
-    }
-  };
-
-  const initializePayment = usePaystackPayment(config);
-
-  // FIX: Added these functions back so the terminal errors go away
-  const onSuccess = (reference) => {
-    handlePaymentSuccess(reference);
-  };
-
-  const onClose = () => {
-    console.log("Payment window closed");
-  };
+  const [txRef, setTxRef] = useState(() => `tx-${Date.now()}`);
 
   const handleCheckoutClick = () => {
-    // 1. Clear the UI and storage immediately
-    setCart([]); 
-    localStorage.removeItem("wonderscents_cart");
-    
-    // 2. Open Paystack
-    initializePayment(onSuccess, onClose);
+    // 1. Close cart drawer so user sees product page underneath
+    setIsCartOpen(false);
+
+    // 2. Trigger native Flutterwave inline modal
+    if (window.FlutterwaveCheckout) {
+      window.FlutterwaveCheckout({
+        public_key: 'FLWPUBK_TEST-06be8b32ce262b21c357b7dcf55d1360-X',
+        tx_ref: txRef,
+        amount: finalTotal,
+        currency: 'NGN',
+        payment_options: 'card,ussd,banktransfer',
+        customer: {
+          email: "emmanuelfaith869@gmail.com",
+          phone_number: "08160398610",
+          name: "Emmanuel Faith",
+        },
+        customizations: {
+          title: "Wonderscents Store",
+          description: "Payment for cart items",
+          logo: "https://checkout.flutterwave.com/assets/img/rave-logo.png",
+        },
+        meta: {
+          cart_items: cart.map(item => `${item.name} (x${item.quantity})`).join(", "),
+          delivery_fee: `₦${deliveryCost}`
+        },
+        callback: function (response) {
+          console.log("Payment Response:", response);
+          if (response.status === 'successful') {
+            setCart([]); 
+            localStorage.removeItem("wonderscents_cart");
+            if (handlePaymentSuccess) {
+              handlePaymentSuccess(response);
+            }
+          } else {
+            alert("Payment failed.");
+          }
+          setTxRef(`tx-${Date.now()}`);
+        },
+        onclose: function() {
+          console.log("Modal closed");
+          setTxRef(`tx-${Date.now()}`);
+        }
+      });
+    } else {
+      alert("Flutterwave SDK failed to load. Please check your internet connection.");
+    }
   };
 
   if (!isCartOpen) return null;
@@ -77,12 +82,11 @@ function Cart({ cart,
               className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4"
               style={{ gap: "12px" }}
             >
-              {/* Left: Product Image & Text Block */}
               <div className="flex items-center flex-1 min-w-0" style={{ gap: "12px" }}>
                 <img 
                   src={item.image || item.img} 
                   alt={item.name} 
-                  style={{ width: "48px", height: "48px", objectFit: "contain", backgroundColor: "#f8fafc", p: "4px", borderRadius: "4px" }} 
+                  style={{ width: "48px", height: "48px", objectFit: "contain", backgroundColor: "#f8fafc", padding: "4px", borderRadius: "4px" }} 
                 />
                 <div className="flex flex-col min-w-0">
                   <span className="text-xs font-bold text-slate-800 truncate">{item.name}</span>
@@ -90,10 +94,7 @@ function Cart({ cart,
                 </div>
               </div>
 
-              {/* Right: Controls Wrapper (Quantity Selectors + Trash Button Aligned) */}
               <div className="flex items-center" style={{ gap: "14px" }}>
-                
-                {/* Modern Compact Stepper */}
                 <div 
                   className="flex items-center border border-slate-200 rounded-sm bg-white overflow-hidden"
                   style={{ height: "28px" }}
@@ -119,7 +120,6 @@ function Cart({ cart,
                   </button>
                 </div>
                 
-                {/* Sleek Delete Icon Action */}
                 <button 
                   onClick={() => removeFromCart(item.id)} 
                   className="hover:text-red-600 text-slate-400 transition-colors p-1"
@@ -127,23 +127,23 @@ function Cart({ cart,
                 >
                   <i className="bx bx-trash"></i>
                 </button>
-
               </div>
             </div>
           ))}
-          {/* FIX: Using setIsDelivery here fixes the "defined but never used" error */}
-          <div style={{ marginTop: "20px", marginLeft:"20px", fontSize: "14px"  }}>
+
+          <div style={{ marginTop: "20px", marginLeft:"20px", fontSize: "14px" }}>
             <label>
-              <input type="radio" checked={!isDelivery} onChange={() => setIsDelivery(false)} /> Store Pickup(Free)
+              <input type="radio" checked={!isDelivery} onChange={() => setIsDelivery(false)} /> Store Pickup (Free)
             </label>
             <label style={{ marginLeft: "10px" }}>
-              <input type="radio" checked={isDelivery} onChange={() => setIsDelivery(true)} /> Home Delivery(₦{deliveryCost})
+              <input type="radio" checked={isDelivery} onChange={() => setIsDelivery(true)} /> Home Delivery (₦{deliveryCost})
             </label>
           </div>
 
           <button 
+            type="button"
             onClick={handleCheckoutClick}
-            style={{ width: "100%", padding: "12px", backgroundColor: "black", color: "white", marginTop: "20px", cursor: "pointer" }}
+            style={{ width: "100%", padding: "12px", backgroundColor: "black", color: "white", marginTop: "20px", cursor: "pointer", border: "none" }}
           >
             Proceed to Checkout (₦{finalTotal})
           </button>
