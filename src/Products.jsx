@@ -2,6 +2,7 @@ import { Product, Product2, Product3 } from "./Product-Component/data/Product.js
 import ProductCard from "./Product-Component/Component/ProductCard.jsx";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import ProductRequestForm from "./Product-Component/ProductRequestForm.jsx";
 
 function Products({ addToCart }) {
     // 1. Separate states so each "See More" button works independently
@@ -33,18 +34,25 @@ function Products({ addToCart }) {
                         Search Results for "{searchTarget}"
                     </h2>
                     <div className="flex flex-col items-center">
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[20px] bg-white shadow-[4px_4px_5px_gray] p-[50px_10px] w-full">
-                            {displayedProducts.map((item) => (
-                                <ProductCard key={item.id} item={item} onAdd={addToCart} />
-                            ))}
-                        </div>
-                        {displayedProducts.length === 0 && (
-                            <p className="text-slate-400 my-10 font-semibold">No fragrances found matching your search.</p>
+                        {displayedProducts.length > 0 ? (
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[20px] bg-white shadow-[4px_4px_5px_gray] p-[50px_10px] w-full">
+                                {displayedProducts.map((item) => (
+                                    <ProductCard key={item.id} item={item} onAdd={addToCart} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md my-6 text-center">
+                                <p className="text-slate-600 mb-4 font-semibold">
+                                    No fragrances found matching "{searchTarget}".
+                                </p>
+                                <h3 className="text-lg font-bold mb-4 text-gray-800">Request it directly from us!</h3>
+                                <ProductRequestForm />
+                            </div>
                         )}
                     </div>
                 </div>
             ) : (
-                /* Otherwise, if NO search is active, show the default categorized rows */
+                /* Otherwise, if NO search is active, show default categorized rows */
                 <>
                     {/* Category 1: Perfume (using 'Product') */}
                     <div className="my-[80px] mx-[20px]">
@@ -103,6 +111,15 @@ function Products({ addToCart }) {
                                     {showAll3 ? "Show Less" : "See More Products"}
                                 </button>
                             )}
+                        </div>
+                    </div>
+
+                    {/* General Product Request Section */}
+                    <div className="my-[80px] mx-[20px] flex justify-center">
+                        <div className="w-full max-w-lg bg-white p-6 rounded-lg shadow-[4px_4px_5px_gray]">
+                            <h2 className="text-center text-2xl font-bold mb-2">Can't Find What You're Looking For?</h2>
+                            <p className="text-center text-gray-600 mb-6 text-sm">Submit a request and we'll check stock availability for you.</p>
+                            <ProductRequestForm />
                         </div>
                     </div>
                 </>
